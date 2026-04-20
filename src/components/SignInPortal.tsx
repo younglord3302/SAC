@@ -3,6 +3,8 @@ import { HardHat, Truck, Building2, ArrowRight } from 'lucide-react';
 import { SignIn } from '@clerk/react';
 import { useState } from 'react';
 
+export const SAC_ROLE_KEY = 'sac_selected_role';
+
 export function SignInPortal() {
   const [selectedRole, setSelectedRole] = useState<'worker' | 'contractor' | 'owner' | null>(null);
 
@@ -88,7 +90,10 @@ export function SignInPortal() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 + 0.2 }}
             whileHover={{ y: -8, scale: 1.02 }}
-            onClick={() => setSelectedRole(portal.id as any)}
+            onClick={() => {
+              localStorage.setItem(SAC_ROLE_KEY, portal.id);
+              setSelectedRole(portal.id as any);
+            }}
             className={`group cursor-pointer p-8 rounded-3xl bg-slate-900/50 border ${portal.border} backdrop-blur-xl relative overflow-hidden transition-all hover:bg-slate-900 hover:shadow-2xl hover:shadow-${portal.color}-500/10`}
           >
             {/* Hover Gradient */}
