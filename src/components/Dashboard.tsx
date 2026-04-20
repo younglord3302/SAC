@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { useRole } from '../hooks/useRole';
 import { OwnerDashboard } from './OwnerDashboard';
 import { WorkerDashboard } from './WorkerDashboard';
+import { WorkflowBanner } from './WorkflowBanner';
 
 export function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,6 +68,19 @@ export function Dashboard() {
             </div>
           </div>
         </header>
+
+        {/* Workflow Guide */}
+          <WorkflowBanner
+            steps={[
+              { label: 'Create Project', path: '/dashboard', current: true },
+              { label: 'Add Tasks', path: '/dashboard/projects', done: false },
+              { label: 'Request Delivery', path: '/dashboard/projects', done: false },
+              { label: 'Track Logistics', path: '/dashboard/logistics', done: false },
+            ]}
+            nextLabel="Manage Fleet"
+            nextPath="/dashboard/logistics"
+            nextDesc="Next step"
+          />
 
         {/* Content */}
         <div className="space-y-10">

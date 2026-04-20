@@ -17,6 +17,7 @@ import { Settings } from './components/Settings';
 import { Notifications } from './components/Notifications';
 import { Logo } from './components/Logo';
 import { MarketingSections } from './components/MarketingSections';
+import { OnboardingPage } from './components/OnboardingPage';
 
 function LandingPage() {
   return (
@@ -195,9 +196,10 @@ function App() {
         } />
         <Route path="/sign-up/*" element={
           <div className="min-h-screen w-full bg-[#0b1120] flex items-center justify-center p-6 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent">
-            <SignUp routing="path" path="/sign-up" fallbackRedirectUrl="/dashboard" />
+            <SignUp routing="path" path="/sign-up" fallbackRedirectUrl="/welcome" />
           </div>
         } />
+        <Route path="/welcome" element={<ProtectedRoute><OnboardingPage /></ProtectedRoute>} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/dashboard/logistics" element={<ProtectedRoute><LogisticsDashboard /></ProtectedRoute>} />
         <Route path="/dashboard/team" element={<ProtectedRoute><TeamManagement /></ProtectedRoute>} />
