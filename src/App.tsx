@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { useAuth, SignIn, SignUp } from '@clerk/react';
+import { SignInPortal } from './components/SignInPortal';
 import { motion } from 'framer-motion';
 import { HardHat, Truck, BarChart3, ChevronRight } from 'lucide-react';
 import heroImg from './assets/hero.png';
@@ -388,7 +389,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/sign-in/*" element={
           <div className="min-h-screen w-full bg-[#0b1120] flex items-center justify-center p-6 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent">
-            <SignIn routing="path" path="/sign-in" fallbackRedirectUrl="/dashboard" />
+            <SignInPortal />
           </div>
         } />
         <Route path="/sign-up/*" element={
